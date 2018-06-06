@@ -17,10 +17,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from restraunts.views import home_function, about_function, contact_function
+#from restraunts.views import home_function, about_function, contact_function
+from restraunts.views import HomeView,ContactView, AboutView
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home/$', home_function),
-    url(r'^about/$', about_function),
-    url(r'^contact/$', contact_function),
+    url(r'^home/$', HomeView.as_view()),
+    url(r'^about/$', AboutView.as_view()),
+    url(r'^contact/$', ContactView.as_view()),
 ]
