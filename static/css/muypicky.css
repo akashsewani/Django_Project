@@ -1,0 +1,22 @@
+.container
+{
+    background-color:pink!important;
+
+}
+
+.navbar_contents a : link
+{
+    background-color:red;
+}
+
+.footer
+{
+        background-color:red!important;
+    
+}
+
+
+.wrapper
+{
+    height:1000px;
+}

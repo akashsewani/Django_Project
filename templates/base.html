@@ -1,0 +1,32 @@
+<html>
+    <head>
+        
+            		{% block header %} 
+
+		            {% endblock header %}
+		            {% include "snippets/css.html" %}
+        
+    </head>
+    <body>
+        <div class="container">
+                    
+                <h1>MuyPicky.com</h1>
+                {% block content %} 
+		        {% endblock content %}
+		        {% include "snippets/navbar.html" %}
+		        
+		        <div class="wrapper">
+		            
+		        </div>
+		        {% include "snippets/footer.html" %}
+		        
+        </div>
+        
+
+        
+        
+    </body>
+    
+
+
+
