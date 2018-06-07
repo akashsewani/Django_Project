@@ -18,11 +18,12 @@ from django.conf.urls import url
 from django.contrib import admin
 
 #from restraunts.views import home_function, about_function, contact_function
-from restraunts.views import HomeView,ContactView, AboutView
+#from restraunts.views import HomeView,ContactView, AboutView
+from restraunts.views import HomeTemplateView,ContactTemplateView,AboutTemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home/$', HomeView.as_view()),
-    url(r'^about/$', AboutView.as_view()),
-    url(r'^contact/$', ContactView.as_view()),
+    url(r'^home/$', HomeTemplateView.as_view()),
+    url(r'^about/$', AboutTemplateView.as_view()),
+    url(r'^contact/$', ContactTemplateView.as_view()),
 ]
