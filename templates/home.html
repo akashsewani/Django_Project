@@ -7,8 +7,18 @@
 		{% endblock header %}
 	
                 {% block content %}
-                	{{pagename}}
+
+                	</br>
+                	<h3 id="">Restraunt List</h3>
+     			<ul>
+     				{% for obj in objectlist %}
+     					<li>{{obj}}</li>
+     				{%endfor%}	
+     			</ul>
+                	
 		        {% endblock content %}
+		     
+		 
 
 
 

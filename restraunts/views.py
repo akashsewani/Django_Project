@@ -6,7 +6,7 @@ from django.views.generic import View
 
 from django.views.generic import TemplateView
 
-
+from .models import RestrauntInfo
 # Create your views here.
 
 
@@ -49,8 +49,47 @@ class HomeTemplateView(TemplateView):
 	
 	def get_context_data(self,*args,**kwargs):
 		context=super(HomeTemplateView,self).get_context_data(*args,**kwargs)
+		queryset=RestrauntInfo.objects.all()
 		context={
-					"pagename":"Home Page"
+					"pagename":"Home Page",
+					"objectlist" : queryset
+				}
+		return context
+class HomeTemplateView_dhabha(TemplateView):
+	template_name="home.html"
+	
+	def get_context_data(self,*args,**kwargs):
+		context=super(HomeTemplateView_dhabha,self).get_context_data(*args,**kwargs)
+		queryset=RestrauntInfo.objects.all().filter(Category__iexact="dhabha")
+		context={
+					"pagename":"Home Page",
+					"objectlist" : queryset
+				}
+		return context
+		
+		
+class HomeTemplateView_dinein(TemplateView):
+	template_name="home.html"
+	
+	def get_context_data(self,*args,**kwargs):
+		context=super(HomeTemplateView_dinein,self).get_context_data(*args,**kwargs)
+		queryset=RestrauntInfo.objects.all().filter(Category__iexact="dinein")
+		context={
+					"pagename":"Home Page",
+					"objectlist" : queryset
+				}
+		return context
+		
+		
+class HomeTemplateView_takeaway(TemplateView):
+	template_name="home.html"
+	
+	def get_context_data(self,*args,**kwargs):
+		context=super(HomeTemplateView_takeaway,self).get_context_data(*args,**kwargs)
+		queryset=RestrauntInfo.objects.all().filter(Category__iexact="take away")
+		context={
+					"pagename":"Home Page",
+					"objectlist" : queryset
 				}
 		return context
 			
