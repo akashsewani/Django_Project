@@ -44,7 +44,7 @@ class AboutView(View):
 
 
 #TemplateView based views
-class HomeTemplateView(TemplateView):
+'''class HomeTemplateView(TemplateView):
 	template_name="home.html"
 	
 	def get_context_data(self,*args,**kwargs):
@@ -55,6 +55,8 @@ class HomeTemplateView(TemplateView):
 					"objectlist" : queryset
 				}
 		return context
+		
+		
 class HomeTemplateView_dhabha(TemplateView):
 	template_name="home.html"
 	
@@ -91,6 +93,30 @@ class HomeTemplateView_takeaway(TemplateView):
 					"pagename":"Home Page",
 					"objectlist" : queryset
 				}
+		return context'''
+		
+		
+		
+class HomeTemplateView(TemplateView):
+	template_name="home.html"
+	
+	def get_context_data(self, *args, **kwargs):
+		context=super(HomeTemplateView,self).get_context_data(*args,**kwargs)
+		slug=self.kwargs.get("slug")
+		print self.args
+		print self.kwargs
+		print slug
+		if slug:
+			queryset=RestrauntInfo.objects.all().filter(Category__iexact=slug)
+		else :
+			queryset=RestrauntInfo.objects.all()
+		print queryset
+			
+		
+		context={
+					"pagename":"Home Page",
+					"objectlist" : queryset
+				}
 		return context
 			
 		
@@ -102,6 +128,8 @@ class AboutTemplateView(TemplateView):
 	
 	def get_context_data(self,*args,**kwargs):
 		context=super(AboutTemplateView,self).get_context_data(*args,**kwargs)
+		print args
+		print kwargs
 		context={
 					"pagename":"About Page"
 				}

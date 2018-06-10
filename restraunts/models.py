@@ -13,7 +13,7 @@ class RestrauntInfo (models.Model):
 	UpdatedTime=models.DateTimeField(auto_now=False, default=timezone.now)
 
 	def __str__(self) :
-		return  self.Name+" ,  "+ self.Location
+		return  self.Name+" ,  "+ self.Location+" ,  "+ self.Category
 		
 	
 	''' auto now add is used for timesatmp of adding time

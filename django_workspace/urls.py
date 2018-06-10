@@ -22,19 +22,21 @@ from django.contrib import admin
 from restraunts.views import (
                     HomeTemplateView,
                     ContactTemplateView,
-                    AboutTemplateView,
-                    HomeTemplateView_dinein,
-                    HomeTemplateView_dhabha,
-                    HomeTemplateView_takeaway
+                    AboutTemplateView
+                    #HomeTemplateView_dinein,
+                    #HomeTemplateView_dhabha,
+                    #HomeTemplateView_takeaway
                             )
                     
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home/dinein/$', HomeTemplateView_dinein.as_view()),
-    url(r'^home/dhabha/$', HomeTemplateView_dhabha.as_view()),
-    url(r'^home/takeaway/$', HomeTemplateView_takeaway.as_view()),
-    url(r'^home/$', HomeTemplateView.as_view()),    
+    url(r'^$', HomeTemplateView.as_view()),
+    url(r'^home/(?P<slug>\w+)/$', HomeTemplateView.as_view()),    
     url(r'^about/$', AboutTemplateView.as_view()),
     url(r'^contact/$', ContactTemplateView.as_view()),
+    
+    #url(r'^home/dinein/$', HomeTemplateView_dinein.as_view()),
+    #url(r'^home/dhabha/$', HomeTemplateView_dhabha.as_view()),
+    #url(r'^home/takeaway/$', HomeTemplateView_takeaway.as_view()),
 ]
