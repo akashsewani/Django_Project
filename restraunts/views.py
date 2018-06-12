@@ -6,6 +6,8 @@ from django.views.generic import View
 
 from django.views.generic import TemplateView
 
+from django.views.generic import ListView
+
 from .models import RestrauntInfo
 # Create your views here.
 
@@ -97,27 +99,26 @@ class HomeTemplateView_takeaway(TemplateView):
 		
 		
 		
-class HomeTemplateView(TemplateView):
+class HomeListView(ListView):
 	template_name="home.html"
+	context_object_name='objectlist'
 	
-	def get_context_data(self, *args, **kwargs):
-		context=super(HomeTemplateView,self).get_context_data(*args,**kwargs)
+	def get_queryset(self):
+
 		slug=self.kwargs.get("slug")
-		print self.args
-		print self.kwargs
 		print slug
+
 		if slug:
 			queryset=RestrauntInfo.objects.all().filter(Category__iexact=slug)
 		else :
 			queryset=RestrauntInfo.objects.all()
-		print queryset
+		return queryset
+
+
 			
 		
-		context={
-					"pagename":"Home Page",
-					"objectlist" : queryset
-				}
-		return context
+		
+
 			
 		
 		

@@ -20,7 +20,7 @@ from django.contrib import admin
 #from restraunts.views import home_function, about_function, contact_function
 #from restraunts.views import HomeView,ContactView, AboutView
 from restraunts.views import (
-                    HomeTemplateView,
+                    HomeListView,
                     ContactTemplateView,
                     AboutTemplateView
                     #HomeTemplateView_dinein,
@@ -31,8 +31,8 @@ from restraunts.views import (
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HomeTemplateView.as_view()),
-    url(r'^home/(?P<slug>\w+)/$', HomeTemplateView.as_view()),    
+    url(r'^$', HomeListView.as_view()),
+    url(r'^(?P<slug>\w+)/$', HomeListView.as_view()),    
     url(r'^about/$', AboutTemplateView.as_view()),
     url(r'^contact/$', ContactTemplateView.as_view()),
     
