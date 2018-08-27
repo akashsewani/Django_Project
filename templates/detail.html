@@ -2,19 +2,16 @@
 
 
 
-		{% block header %}
-			<title>Home</title>
+		{% block header %} 
+			<title>Detail Page</title>
 		{% endblock header %}
 	
                 {% block content %}
 
                 	</br>
                 	<h3 id="">Restraunt List</h3>
-     			<ul>
-     				{% for obj in object_list%}
-     					<a href=""> <li>{{obj.Name}}</li> </a>
-     				{%endfor%}	
-     			</ul>
+                	{{object.Name}}
+
                 	
 		        {% endblock content %}
 		     
