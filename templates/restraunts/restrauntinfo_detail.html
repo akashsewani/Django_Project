@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+
+		{% block header %} 
+			<title>Detail Page</title>
+		{% endblock header %}
+	
+                {% block content %}
+     					<h1>{{object.Name}},  <small>{{object.Category}}</small></h1>
+                		<p>{{object.Location}}</p>
+                		<p>Created on {{object.CreatedTime}}</p>
+                		<p>updated {{object.UpdatedTime|timesince}} ago</p>
+		        {% endblock content %}
+		     
+		 
+
+
+

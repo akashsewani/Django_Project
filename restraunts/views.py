@@ -6,6 +6,8 @@ from django.views.generic import TemplateView
 
 from django.views.generic import ListView
 
+from django.views.generic import DetailView
+
 from django.db.models import Q
 
 from .models import RestrauntInfo
@@ -37,10 +39,11 @@ class contact_class_view(View):
 		return render(request,"contact.html",{})'''
 
 
-'''#Class Based Template View		
+#Class Based Template View		
 class home_template_view(TemplateView):
 	template_name="home.html"
 	def get_context_data(self,*args,**kwargs):
+		print(kwargs)
 		queryset=RestrauntInfo.objects.all()
 		context=super(home_template_view,self).get_context_data(*args,**kwargs)
 		context={
@@ -48,7 +51,30 @@ class home_template_view(TemplateView):
 			}
 		return context
 
+
 class about_template_view(TemplateView):
+	template_name="about.html"
+	def get_context_data(self, *args, **kwargs):
+		print(kwargs)
+		context=super(about_template_view,self).get_context_data(*args,**kwargs)
+		context={
+			"pagename":"about page"
+		}
+		return context
+		
+		
+
+class contact_template_view(TemplateView):
+	template_name="contact.html"
+	def get_context_data(self, *args, **kwargs):
+		context=super(contact_template_view,self).get_context_data(*args,**kwargs)
+		context={
+			"pagename":"contact page"
+		}
+		return context
+	
+
+'''class about_template_view(TemplateView):
 	template_name="about.html"
 
 class contact_template_view(TemplateView):
@@ -56,11 +82,11 @@ class contact_template_view(TemplateView):
 		
 		
 #Class Based List View		
-class all_list_view(ListView):
+'''class all_list_view(ListView):
 	template_name="home.html"
 	queryset=RestrauntInfo.objects.all()
 	
-'''class dinein_list_view(ListView):
+class dinein_list_view(ListView):
 	template_name="home.html"
 	queryset=RestrauntInfo.objects.all().filter(Category__iexact='Dinein')  #double underscores
 
@@ -72,40 +98,45 @@ class dhabha_list_view(ListView):
 	template_name="home.html"
 	queryset=RestrauntInfo.objects.all().filter(Category__iexact='dhabha') #double underscores'''
 
-class about_template_view(TemplateView):
-	template_name="about.html"
-	def get_context_data(self, *args, **kwargs):
-		context=super(about_template_view,self).get_context_data(*args,**kwargs)
-		context={
-			"pagename":"about page"
-		}
-		return context
 
-class contact_template_view(TemplateView):
-	template_name="contact.html"
-	def get_context_data(self, *args, **kwargs):
-		context=super(contact_template_view,self).get_context_data(*args,**kwargs)
-		context={
-			"pagename":"contact page"
-		}
-		return context
 		
 class generalised_list_view(ListView):
-	template_name="home.html"
 	def get_queryset(self,**kwargs):
 		slug=self.kwargs.get("slug")
-		print("akash sew")
-		print(self.kwargs)
-		print(self.args)
+		print(kwargs)
 		if(slug):
 			queryset=RestrauntInfo.objects.all().filter(
 				Q(Category__iexact=slug)#|
 			#	Q(Category__icontains=slug)
 				)
+			print(queryset)
 		else:
 			queryset=RestrauntInfo.objects.all()
 		return queryset
-	
+		
+		
+class restraunt_detail_view(DetailView):
+	def get_queryset(self, *args, **kwargs):
+		print(kwargs)
+		queryset=RestrauntInfo.objects.all()
+		print(queryset)
+		return queryset
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
 		
 	
 	

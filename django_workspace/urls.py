@@ -22,8 +22,11 @@ from django.contrib import admin
 #from restraunts.views import home_template_view, about_template_view, contact_template_view
 #from restraunts.views import home_list_view, about_list_view, contact_list_view
 
-#from restraunts.views import all_list_view, about_template_view, contact_template_view, dinein_list_view, takeaway_list_view, dhabha_list_view
-from restraunts.views import  generalised_list_view, about_template_view, contact_template_view , all_list_view
+#from restraunts.views import all_list_view, about_template_view, contact_template_view #, dinein_list_view, takeaway_list_view, dhabha_list_view
+from restraunts.views import  home_template_view, about_template_view, contact_template_view, restraunt_detail_view, generalised_list_view
+
+
+#from restraunts.views import  restraunt_detail_view
 
 '''from restraunts.views import(HomeListView,
 HomeDetailView,
@@ -54,15 +57,21 @@ urlpatterns = [
     #url(r'^contact/', contact_template_view.as_view()),
     
     # URL for Class Based List View
-    url(r'^home/$', all_list_view.as_view()),
+    url(r'^$', home_template_view.as_view()),
     url(r'^about/$', about_template_view.as_view()),
     url(r'^contact/$', contact_template_view.as_view()),
+    url(r'^(?P<slug>[\w]+)$', generalised_list_view.as_view()),
+    url(r'^restraunt/(?P<slug>[\w-]+)$', restraunt_detail_view.as_view()),
+    
+    
+    
+    
+    
+    
+    
     #url(r'^dinein/', dinein_list_view.as_view()),
     #url(r'^dhabha/', dhabha_list_view.as_view()),
     #url(r'^takeaway/', takeaway_list_view.as_view()),
-    url(r'^home/(?P<slug>[\w-]+)', generalised_list_view.as_view()),
-    
-    
     ]
     
     
